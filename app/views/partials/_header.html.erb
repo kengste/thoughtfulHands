@@ -20,11 +20,14 @@
     <li class="nav-label">
       <%= link_to "Charities", beneficiaries_index_path, id: "nav-right2" %>
     </li>
-    <li class="nav-right">
+        <li class="nav-right">
       <%= link_to "#{current_user.name}", profile_path %>
     </li>
     <li class="nav-right">
       <%= link_to 'Logout', logout_path, method: :delete %>
+    </li>
+    <li class="nav-right">
+      <%= link_to "Home", root_path %>
     </li>
     <% else %>
     <li class="nav-label">

@@ -8,32 +8,10 @@
       <div class='flap flap-5'></div>
       <div class='flap flap-6'></div>
     </div>
-    <h1 class="orange-color center-text campaign-header">Campaigns</h1>
+    <h1 class="orange-color center-text campaign-header">Trending Campaign</h1>
   </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--
-
-duplicate
-
--->
-
-
-
-
-<div class="container">
+<div class="container" style="margin-top:20px;">
   <div class="row">
   <% @campaigns.each do |campaign| %>
     <div class="twelve columns bottom-20" style="border: solid 0.5px #F1EEEA; border-radius:10px;padding: 20px;">
@@ -49,12 +27,11 @@ duplicate
       <div class="twelve columns" style="margin-top: -20px">
         <small>Beneficiary:</small>
         <h5 class="project-content-extra"><%= campaign.beneficiary.name %></h5>
-
       </div>
       <div class="twelve columns">
         <ul class="ten columns">
           <li class="project-footer">
-            <strong>$<%= campaign.target_amount %></strong>
+            <strong><%= number_to_currency(campaign.target_amount, :unit => "S$") %></strong>
             <span class="project-footer-extra">Target</span>
           </li>
           <li class="project-footer">
@@ -64,7 +41,7 @@ duplicate
         </ul>
         <ul class="two columns" style="text-align:right">
           <li class="project-footer">
-            <strong>$<%= campaign.donations_total %></strong>
+            <strong><%= number_to_currency(campaign.donations_total, :unit => "S$") %></strong>
             <span class="project-footer-extra">Total pledged</span>
           </li>
         </ul>
@@ -75,7 +52,6 @@ duplicate
         </div>
       </div>
       <br />
-
       <%= form_for(@donation) do |f| %>
       <% if @donation.errors.any? %>
       <div id="error_explanation">
@@ -96,7 +72,7 @@ duplicate
           <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
           data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
           data-description="<%= campaign.title %>"
-          data-email="<%= campaign.user.email %>"
+          data-email="<%= current_user.email %>"
           data-amount="<%= @donation.amount %>">
           </script>
           <%= f.submit "support the campaign", class: "four columns " %>
@@ -131,9 +107,7 @@ duplicate
               <%= f.hidden_field :name, :value=> @current_user.name %>
             </div>
             <%= f.hidden_field :quantity, :value=> 1 %>
-
             <%= f.hidden_field :campaign_id, :value=> campaign.id %>
-
             <div>
               <%= f.submit "Volunteer" %>
             </div>
@@ -142,6 +116,5 @@ duplicate
       </div>
     </div>
   <% end %>
-  </div>
-
+</div>
 </div>

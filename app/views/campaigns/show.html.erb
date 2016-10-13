@@ -27,6 +27,6 @@
 </p>
 
 
-<%= link_to 'Back', campaigns_path %>
+<button><%= link_to 'Back', campaigns_path %></button>
 
 <%= render partial: "comments/template", locals: {commentable: @campaign, new_comment: @comment} %>

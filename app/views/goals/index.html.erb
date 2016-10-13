@@ -15,9 +15,9 @@
       <p class="project-byline"><%= goal.user.name %></p>
       <%= cl_image_tag(goal.picture, :height => 150) unless goal.picture.blank? %>
       <button id="myBtn10" type="button" name="button" onclick="var x = document.getElementById('descriptionGoal<%= goal.id %>'); if (x.style.display === 'none') {x.style.display = 'block';} else {x.style.display = 'none';}">See description</button>
-       <div id="descriptionGoal<%= goal.id %>" class="twelve columns hide">
-           <%= goal.description %>
-       </div>
+      <div id="descriptionGoal<%= goal.id %>" class="twelve columns hide">
+        <%= goal.description %>
+      </div>
       <p class="project-content-extra"><%= goal.beneficiary.name %></p>
       <div class="progress-bar blue stripes orange twelve columns">
         <span style="width: <%= (goal.pledges_total/goal.target_amount)*100 %>%"></span>
@@ -44,8 +44,8 @@
       </ul>
       <h6>
         <%= link_to like_goal_path(goal), remote: true, class: 'like', method: :put do %>
-          <i class="fa fa-thumbs-up" aria-hidden="true"></i>
-          <span id="upvotes-<%=goal.id%>"><%= goal.get_upvotes.size %></span>
+        <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+        <span id="upvotes-<%=goal.id%>"><%= goal.get_upvotes.size %></span>
         <% end %>
 
 
@@ -75,15 +75,15 @@
         <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
         data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
         data-description="<%= goal.title %>"
-        data-email="<%= goal.user.email %>"
+        data-email="<%= current_user.email %>"
         data-amount="<%= @pledge.amount %>">
         </script>
         <%= f.submit %>
       </div>
       <% end %>
       <div class="hvr-underline-from-center">
-       <%= social_share_button_tag(goal.title, :url => goal_path(:id => goal.id)) %>
-     </div>
+        <%= social_share_button_tag(goal.title, :url => goal_path(:id => goal.id)) %>
+      </div>
 
     </div>
     <% end %>

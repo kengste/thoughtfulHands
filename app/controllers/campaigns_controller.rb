@@ -10,13 +10,11 @@ class CampaignsController < ApplicationController
     @volunteer = Volunteer.new
     @donation = Donation.new
     @campaign = Campaign.where(id: params[:id])
-
     @id = params[:id]
 
   end
   # GET /campaigns/1
   def show
-      @campaign = Campaign.find(params[:id])
       @new_comment = Comment.build_from(@campaign, current_user.id, "")
   end
   # GET /campaigns/:specialityid/new

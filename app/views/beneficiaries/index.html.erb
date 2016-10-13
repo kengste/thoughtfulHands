@@ -1,10 +1,16 @@
 <div class="container">
   <div class="twelve columns offset-by-three">
-    <h4>Our list of Charities that we support</h4>
+    <h4>Soulify is proud to be an official partner of
+      <br>the following non-profit organisations:
+    </h4>
     <% @beneficiaries.each do |beneficiary| %>
     <ul>
       <li><%= beneficiary.name %></li>
     </ul>
     <% end %>
+    <button>
+      <%= link_to 'Back', root_path, class:"hvr-underline-from-center left-space" %>
+    </button>
+
   </div>
 </div>

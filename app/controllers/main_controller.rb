@@ -4,7 +4,6 @@ class MainController < ApplicationController
   helper_method :sort_column, :sort_direction
   before_action :search
   before_action :current_user
-  before_action :search
 
   def index
     @search = Goal.search(params[:q])
@@ -14,8 +13,13 @@ class MainController < ApplicationController
     @pledge = Pledge.new
     @goal = Goal.where(id: params[:id])
     @id = params[:id]
+    @campaigns = Campaign.all
+    @volunteer = Volunteer.new
+    @donation = Donation.new
+    @campaign = Campaign.where(id: params[:id])
+
   end
-  
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_goal

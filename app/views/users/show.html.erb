@@ -2,7 +2,12 @@
   <div class="row">
     <div class="three columns">
       <p>
+        <% if @user.provider_img != nil %>
       <%= image_tag(@user.provider_img)%>
+
+      <% else %>
+
+      <% end %>
       </p>
     </div>
     <div class="six columns">
