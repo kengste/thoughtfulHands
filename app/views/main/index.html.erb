@@ -71,7 +71,7 @@
         data-email="<%= current_user.email %>"
         data-amount="<%= @pledge.amount %>">
         </script>
-        <%= f.submit %>
+        <%= f.submit "Pledge", class:"orange-button"%>
       </div>
       <% end %>
 
@@ -80,7 +80,7 @@
     <% end %>
   </div>
   <br>
-  <%= button_to 'Learn more', goals_path, :method => :get, class:"hvr-bounce-to-right" %>
+  <%= button_to 'Learn more about goals', goals_path, :method => :get, class:"hvr-bounce-to-right" %>
 </div>
 <div class="container">
   <div class="row">
@@ -148,7 +148,7 @@
             data-email="<%= campaign.user.email %>"
             data-amount="<%= @donation.amount %>">
             </script>
-            <%= f.submit "support the campaign", class: "four columns " %>
+            <%= f.submit "support the campaign", class: "four columns orange-button" %>
           <% end %>
           </div>
         </div>
@@ -184,13 +184,14 @@
               <%= f.hidden_field :campaign_id, :value=> campaign.id %>
 
               <div>
-                <%= f.submit "Volunteer" %>
+                <%= f.submit "Volunteer", class:"orange-button" %>
               </div>
             <% end %>
           </div>
         </div>
       </div>
     <% end %>
+    <%= button_to 'Learn more about Campaign', campaigns_path, :method => :get, class:"hvr-bounce-to-right" %>
   </div>
 </div>
 
@@ -203,8 +204,9 @@
     </span>
   </div>
 </div>
-<div class="container">
+<div class="container" style="margin-top:40px;">
   <div class="row">
+  <h4>Featured Campaign</h4>
   <% @campaigns.each do |campaign| %>
     <div class="twelve columns bottom-20" style="border: solid 0.5px #F1EEEA; border-radius:10px;padding: 20px;">
       <div class="six columns">
@@ -270,11 +272,11 @@
         </div>
         <ul class="twelve columns">
           <li class="project-footer">
-            <strong>$<%= goal.target_amount %></strong>
+            <strong><%= number_to_currency(goal.target_amount, :unit => "S$") %></strong>
             <span class="project-footer-extra">Target</span>
           </li>
           <li class="project-footer">
-            <strong>$<%= goal.penalty_amount %></strong>
+            <strong><%= number_to_currency(goal.penalty_amount, :unit => "S$") %></strong>
             <span class="project-footer-extra">Penalty</span>
           </li>
           <li class="project-footer">
@@ -284,7 +286,7 @@
         </ul>
         <ul class="twelve columns">
           <li class="project-footer">
-            <strong>$<%= goal.pledges_total %></strong>
+            <strong><%= number_to_currency(goal.pledges_total, :unit => "S$") %></strong>
             <span class="project-footer-extra">Total pledged</span>
           </li>
         </ul>
@@ -366,7 +368,7 @@
 <script>
     $(function(){
         $(".element").typed({
-            strings: ["yourself" , "or", "the world"],
+            strings: ["yourself" , "and", "the world"],
             typeSpeed: 0
         });
     });

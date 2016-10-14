@@ -75,7 +75,7 @@
           data-email="<%= current_user.email %>"
           data-amount="<%= @donation.amount %>">
           </script>
-          <%= f.submit "support the campaign", class: "four columns " %>
+          <%= f.submit "support the campaign", class: "four columns orange-button"%>
         <% end %>
         </div>
       </div>
@@ -109,7 +109,7 @@
             <%= f.hidden_field :quantity, :value=> 1 %>
             <%= f.hidden_field :campaign_id, :value=> campaign.id %>
             <div>
-              <%= f.submit "Volunteer" %>
+              <%= f.submit "Volunteer", class:"orange-button" %>
             </div>
           <% end %>
         </div>

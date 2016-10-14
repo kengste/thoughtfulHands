@@ -21,6 +21,18 @@
     display: none;
   }
 
+  .orange-button {
+    background-color: #fc3844 !important;
+    border-color: #fc3844 !important;
+    color: white !important;
+  }
+
+  .orange-button:hover {
+    background-color: #fc3844 ;
+    border-color: #fc3844 ;
+    color: white ;
+  }
+
   a.pill {
     border-radius: 16px;
     line-height: 15px;
